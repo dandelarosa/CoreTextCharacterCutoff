@@ -56,6 +56,23 @@
     UIImageView *textImageView = [[UIImageView alloc] initWithImage:textImage];
     textImageView.frame = viewRect;
     [self.view addSubview:textImageView];
+    
+    // Changing to a UILabel doesn't help
+    
+    CGRect labelRect = CGRectMake(50.0f, 200.0f, 345.0f, 120.0f);
+    UILabel *label = [[UILabel alloc] initWithFrame:labelRect];
+    label.text = @"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.";
+    label.adjustsFontSizeToFitWidth = NO;
+    label.baselineAdjustment = UIBaselineAdjustmentNone;
+    label.lineBreakMode = UILineBreakModeWordWrap;
+    label.numberOfLines = 0;
+    label.textAlignment = UITextAlignmentLeft;
+    label.font = font;
+    label.backgroundColor = [UIColor lightGrayColor];
+    label.textColor = [UIColor blackColor];
+    // Can't verically align a UILabel, so do this instead
+    [label sizeToFit];
+    [self.view addSubview:label];
 }
 
 - (void)viewDidUnload
