@@ -35,17 +35,17 @@
 		374A791315C97124002F3D60 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		374A791515C97124002F3D60 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		374A791715C97124002F3D60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		374A791B15C97124002F3D60 /* CoreTextCharacterCutoff-Info.plist */ = {isa = PBXFileReference; path = "CoreTextCharacterCutoff-Info.plist"; sourceTree = "<group>"; };
+		374A791B15C97124002F3D60 /* CoreTextCharacterCutoff-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreTextCharacterCutoff-Info.plist"; sourceTree = "<group>"; };
 		374A791D15C97124002F3D60 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		374A791F15C97124002F3D60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		374A792115C97124002F3D60 /* CoreTextCharacterCutoff-Prefix.pch */ = {isa = PBXFileReference; path = "CoreTextCharacterCutoff-Prefix.pch"; sourceTree = "<group>"; };
-		374A792215C97124002F3D60 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		374A792115C97124002F3D60 /* CoreTextCharacterCutoff-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreTextCharacterCutoff-Prefix.pch"; sourceTree = "<group>"; };
+		374A792215C97124002F3D60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		374A792315C97124002F3D60 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		374A792A15C97124002F3D60 /* CoreTextCharacterCutoffTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTextCharacterCutoffTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		374A792B15C97124002F3D60 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		374A793315C97124002F3D60 /* CoreTextCharacterCutoffTests-Info.plist */ = {isa = PBXFileReference; path = "CoreTextCharacterCutoffTests-Info.plist"; sourceTree = "<group>"; };
+		374A793315C97124002F3D60 /* CoreTextCharacterCutoffTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreTextCharacterCutoffTests-Info.plist"; sourceTree = "<group>"; };
 		374A793515C97124002F3D60 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		374A793715C97124002F3D60 /* CoreTextCharacterCutoffTests.h */ = {isa = PBXFileReference; path = CoreTextCharacterCutoffTests.h; sourceTree = "<group>"; };
+		374A793715C97124002F3D60 /* CoreTextCharacterCutoffTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextCharacterCutoffTests.h; sourceTree = "<group>"; };
 		374A793815C97124002F3D60 /* CoreTextCharacterCutoffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreTextCharacterCutoffTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
