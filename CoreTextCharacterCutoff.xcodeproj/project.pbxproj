@@ -18,6 +18,10 @@
 		374A792E15C97124002F3D60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A791515C97124002F3D60 /* Foundation.framework */; };
 		374A793615C97124002F3D60 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 374A793415C97124002F3D60 /* InfoPlist.strings */; };
 		374A793915C97124002F3D60 /* CoreTextCharacterCutoffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374A793815C97124002F3D60 /* CoreTextCharacterCutoffTests.m */; };
+		374A794F15C98498002F3D60 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374A794E15C98497002F3D60 /* RootViewController.m */; };
+		374A795315C988AA002F3D60 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A795215C988AA002F3D60 /* QuartzCore.framework */; };
+		374A795515C99282002F3D60 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A795415C99282002F3D60 /* CoreText.framework */; };
+		3777918315C9947D00516F6E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3777918215C9947D00516F6E /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,11 @@
 		374A793515C97124002F3D60 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		374A793715C97124002F3D60 /* CoreTextCharacterCutoffTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextCharacterCutoffTests.h; sourceTree = "<group>"; };
 		374A793815C97124002F3D60 /* CoreTextCharacterCutoffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreTextCharacterCutoffTests.m; sourceTree = "<group>"; };
+		374A794D15C98497002F3D60 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		374A794E15C98497002F3D60 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		374A795215C988AA002F3D60 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		374A795415C99282002F3D60 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		3777918215C9947D00516F6E /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374A795515C99282002F3D60 /* CoreText.framework in Frameworks */,
+				374A795315C988AA002F3D60 /* QuartzCore.framework in Frameworks */,
 				374A791415C97124002F3D60 /* UIKit.framework in Frameworks */,
 				374A791615C97124002F3D60 /* Foundation.framework in Frameworks */,
 				374A791815C97124002F3D60 /* CoreGraphics.framework in Frameworks */,
@@ -95,6 +106,8 @@
 		374A791215C97124002F3D60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				374A795415C99282002F3D60 /* CoreText.framework */,
+				374A795215C988AA002F3D60 /* QuartzCore.framework */,
 				374A791315C97124002F3D60 /* UIKit.framework */,
 				374A791515C97124002F3D60 /* Foundation.framework */,
 				374A791715C97124002F3D60 /* CoreGraphics.framework */,
@@ -108,6 +121,9 @@
 			children = (
 				374A792215C97124002F3D60 /* AppDelegate.h */,
 				374A792315C97124002F3D60 /* AppDelegate.m */,
+				3777918215C9947D00516F6E /* MainWindow.xib */,
+				374A794D15C98497002F3D60 /* RootViewController.h */,
+				374A794E15C98497002F3D60 /* RootViewController.m */,
 				374A791A15C97124002F3D60 /* Supporting Files */,
 			);
 			path = CoreTextCharacterCutoff;
@@ -214,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				374A791E15C97124002F3D60 /* InfoPlist.strings in Resources */,
+				3777918315C9947D00516F6E /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +267,7 @@
 			files = (
 				374A792015C97124002F3D60 /* main.m in Sources */,
 				374A792415C97124002F3D60 /* AppDelegate.m in Sources */,
+				374A794F15C98498002F3D60 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +431,7 @@
 				374A793E15C97124002F3D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		374A793F15C97124002F3D60 /* Build configuration list for PBXNativeTarget "CoreTextCharacterCutoffTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +440,7 @@
 				374A794115C97124002F3D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
