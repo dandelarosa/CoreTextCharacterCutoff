@@ -9,8 +9,16 @@
 #import "RootViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreText/CTFont.h>
+#import <CoreText/CTFramesetter.h>
+#import <CoreText/CTParagraphStyle.h>
+#import <CoreText/CTStringAttributes.h>
+
+// Comment this out to hide guidelines
+#define SHOW_GUIDLINES 1
 
 @interface RootViewController ()
+
+-(UIImage *)imageFromCATextLayer:(CATextLayer *)layer andPaddingSize:(CGSize)paddingSize;
 
 @end
 
@@ -73,6 +81,37 @@
     // Can't verically align a UILabel, so do this instead
     [label sizeToFit];
     [self.view addSubview:label];
+    
+    // Create "padded" images
+    
+    UIImage *textImage2 = [self imageFromCATextLayer:textLayer andPaddingSize:CGSizeMake(10.0f, 10.0f)];
+    UIImageView *textImageView2 = [[UIImageView alloc] initWithImage:textImage2];
+    textImageView2.frame = CGRectMake(40.0f, 340.0f, 365.0f, 140.0f);
+    [self.view addSubview:textImageView2];
+    UIImageView *textImageView3 = [[UIImageView alloc] initWithImage:textImage2];
+    textImageView3.frame = CGRectMake(440.0f, 40.0f, 365.0f, 140.0f);
+    [self.view addSubview:textImageView3];
+    
+#ifdef SHOW_GUIDLINES
+    // Use these guidelines to test alignment
+    UIColor *guidelineColor = [UIColor colorWithRed:0.0f green:1.0f blue:0.0f alpha:0.5f];
+    
+    UIView *topGuideline = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 768.0f, 10.0f)];
+    topGuideline.backgroundColor = guidelineColor;
+    [self.view addSubview:topGuideline];
+    
+    UIView *leftGuideline = [[UIView alloc] initWithFrame:CGRectMake(40.0f, 0.0f, 10.0f, 1024.0f)];
+    leftGuideline.backgroundColor = guidelineColor;
+    [self.view addSubview:leftGuideline];
+    
+    UIView *bottomGuideline = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 151.0f, 768.0f, 10.0f)];
+    bottomGuideline.backgroundColor = guidelineColor;
+    [self.view addSubview:bottomGuideline];
+    
+    UIView *rightGuideline = [[UIView alloc] initWithFrame:CGRectMake(395.0f, 0.0f, 10.0f, 1024.0f)];
+    rightGuideline.backgroundColor = guidelineColor;
+    [self.view addSubview:rightGuideline];
+#endif
 }
 
 - (void)viewDidUnload
@@ -84,6 +123,52 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(UIImage *)imageFromCATextLayer:(CATextLayer *)layer andPaddingSize:(CGSize)paddingSize
+{
+    CGFloat paddingWidth = paddingSize.width;
+    CGFloat paddingHeight = paddingSize.height;
+    CGRect textBounds = layer.frame;
+    CGRect paddedImageBounds = CGRectMake(0.0f, 0.0f, textBounds.size.width + 2 * paddingWidth, textBounds.size.height + 2 * paddingHeight);
+	UIGraphicsBeginImageContextWithOptions(paddedImageBounds.size, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextTranslateCTM(context, 0.0f, paddedImageBounds.size.height);
+    CGContextScaleCTM(context, 1, -1);
+    
+    CGContextSetFillColorWithColor(context, layer.backgroundColor);
+    CGContextFillRect(context, paddedImageBounds);
+    
+    CTTextAlignment alignment;
+    if ([layer.alignmentMode isEqualToString: kCAAlignmentLeft]) {
+        alignment = kCTLeftTextAlignment;
+    }
+    else if ([layer.alignmentMode isEqualToString: kCAAlignmentCenter]) {
+        alignment = kCTCenterTextAlignment;
+    }
+    else if ([layer.alignmentMode isEqualToString: kCAAlignmentRight]) {
+        alignment = kCTRightTextAlignment;
+    }
+    else {
+        alignment = kCTLeftTextAlignment;
+    }
+    
+    CTParagraphStyleSetting paragraphSettings = {kCTParagraphStyleSpecifierAlignment, sizeof(alignment), &alignment};
+    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(&paragraphSettings, 1);
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:layer.font, (NSString*)kCTFontAttributeName, paragraphStyle, kCTParagraphStyleAttributeName, layer.foregroundColor, kCTForegroundColorAttributeName, nil];
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:layer.string attributes:attributes];
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge_retained CFAttributedStringRef)attrString);
+    CGMutablePathRef p = CGPathCreateMutable();
+    CGPathAddRect(p, NULL, CGRectMake(10.0f, 2 * paddingHeight - 10.0f, textBounds.size.width, textBounds.size.height));
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0,0), p, NULL);
+    CTFrameDraw(frame, context);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+	return image;
 }
 
 @end
