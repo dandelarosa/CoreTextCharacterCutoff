@@ -40,12 +40,14 @@
 	// Do any additional setup after loading the view.
     CGRect viewRect = CGRectMake(50.0f, 50.0f, 92.0f, 95.0f);
     
+    NSString *text = @"\n aaaa \n";
+    UIFont *font = [UIFont fontWithName:@"AmericanTypewriter" size:22.0f];
+    
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.contentsScale = [[UIScreen mainScreen] scale];
     textLayer.wrapped = YES;
     textLayer.truncationMode = kCATruncationNone;
-    UIFont *font = [UIFont fontWithName:@"AmericanTypewriter" size:22.0f];
-    textLayer.string = @"\n aaaa \n";
+    textLayer.string = text;
     textLayer.alignmentMode = kCAAlignmentLeft;
     textLayer.fontSize = font.pointSize;
     CTFontRef fontRef = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, nil);
@@ -136,7 +138,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     CGContextTranslateCTM(context, 0.0f, paddedImageBounds.size.height);
-    CGContextScaleCTM(context, 1, -1);
+    CGContextScaleCTM(context, 1.0f, -1.0f);
     
     CGContextSetFillColorWithColor(context, layer.backgroundColor);
     CGContextFillRect(context, paddedImageBounds);
@@ -171,7 +173,7 @@
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:layer.string attributes:dict];
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attrString);
     CGMutablePathRef p = CGPathCreateMutable();
-    CGPathAddRect(p, NULL, CGRectMake(10.0f, 2 * paddingHeight - 10.0f, textBounds.size.width, textBounds.size.height));
+    CGPathAddRect(p, NULL, CGRectMake(paddingWidth, paddingHeight+ 0.25 * layer.fontSize, textBounds.size.width, textBounds.size.height));
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0,0), p, NULL);
     CTFrameDraw(frame, context);
     
